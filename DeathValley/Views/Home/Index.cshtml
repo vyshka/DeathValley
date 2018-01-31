@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+   
+<form method="post" id="inForm" name="inForm">
+    <div class="myForm">
+        <p>
+            y = <input class="input-group numberInput"id="coefA" name="coefA" type="number" placeholder="A"/>x<sup>2</sup> +
+            <input class="input-group numberInput" id="coefB" name="coefB" type="number" placeholder="B"/>x +
+            <input class="input-group numberInput" id="coefC" name="coefC" type="number" placeholder="C"/>
+        </p>
+        <p>
+            steps: <input required aria-required="true" class="input-group numberInput" id="step" name="step" type="number"/>
+        </p>
+
+        <p>
+            from:<input class="input-group numberInput" id="rangeFrom" name="rangeFrom" required aria-required="true" type="number"/>
+            to:<input class="input-group numberInput" id="rangeTo" name="rangeTo" required aria-required="true" type="number"/>
+        </p>
+        <button class="btn-group" type="button" id="plot">Plot</button>
+        <br/>
+        <div class="label-danger" id="errormsg"></div>
+    </div>
+</form>    
+
+<canvas id="myCanvas"></canvas>
+    
