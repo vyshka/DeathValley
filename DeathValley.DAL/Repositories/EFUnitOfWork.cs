@@ -9,7 +9,7 @@ using DeathValley.DAL.Interfaces;
 
 namespace DeathValley.DAL.Repositories
 {
-    class EFUnitOfWork:IUnitOfWork
+    public class EFUnitOfWork:IUnitOfWork
     {
         private AppContext db;
         private ParamRepository paramRepository;
