@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DeathValley.DAL.Entities
 {
-    class CacheData
+    public class CacheData
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

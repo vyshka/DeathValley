@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DeathValley.DAL.Entities
 {
-    class Param
+    public class Param
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
