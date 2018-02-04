@@ -5,18 +5,19 @@ using System.Linq;
 using System.Web;
 using Foolproof;
 
+
 namespace DeathValley.Models
 {
     public class Data
     {
         [Required]
-        public double CoefA { get; set; }
+        public double CoefficientA { get; set; }
 
         [Required]
-        public double CoefB { get; set; }
+        public double CoefficientB { get; set; }
 
         [Required]
-        public double CoefC { get; set; }
+        public double CoefficientC { get; set; }
 
         [Required]
         public double RangeFrom { get; set; }

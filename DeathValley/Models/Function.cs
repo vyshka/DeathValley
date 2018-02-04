@@ -21,7 +21,7 @@ namespace DeathValley.Models
         {
             for (double x = _data.RangeFrom; x <= _data.RangeTo; x += _data.Step)
             {
-                double y = _data.CoefA * Math.Pow(x, 2) + _data.CoefB * x + _data.CoefC;
+                double y = _data.CoefficientA * Math.Pow(x, 2) + _data.CoefficientB * x + _data.CoefficientC;
                 Points temp = new Points(x, y);
                 _points.Add(temp);
             }
