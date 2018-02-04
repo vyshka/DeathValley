@@ -21,6 +21,7 @@ namespace DeathValley.BLL.Services
 
         public int GetIdIfExist(ParamDTO paramDto)
         {
+
             var items = Database.Params.GetAll()
                 .Where(p => p.CoefficientA == paramDto.CoefficientA)
                 .Where(p => p.CoefficientB == paramDto.CoefficientB)
