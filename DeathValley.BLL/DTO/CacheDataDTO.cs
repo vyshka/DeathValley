@@ -14,5 +14,12 @@ namespace DeathValley.BLL.DTO
 
         public double PointY { get; set; }
         public int ParamId { get; set; }
+
+        public CacheDataDTO(double x, double y, int id)
+        {
+            PointX = x;
+            PointY = y;
+            ParamId = id;
+        }
     }
 }

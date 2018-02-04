@@ -30,12 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,18 +54,16 @@
     <Compile Include="DTO\CacheDataDTO.cs" />
     <Compile Include="DTO\ParamDTO.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
+    <Compile Include="Interfaces\IDataService.cs" />
     <Compile Include="Interfaces\IParamService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\ParamService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeathValley.DAL\DeathValley.DAL.csproj">
       <Project>{9c428e22-0a35-45a3-b70f-48a22c12193e}</Project>
       <Name>DeathValley.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DeathValley\DeathValley.WEB.csproj">
-      <Project>{68FFE7E1-5378-4394-8E0E-B1A62382DE3A}</Project>
-      <Name>DeathValley.WEB</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

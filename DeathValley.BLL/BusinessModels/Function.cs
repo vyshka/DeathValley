@@ -12,19 +12,19 @@ namespace DeathValley.BLL.BusinessModels
     {
         private readonly ParamDTO _param;
 
-        private readonly List<Points> _points;
+        private readonly List<CacheDataDTO> _points;
         public Function(ParamDTO param)
         {
             _param = param;
-            _points = new List<Points>();
+            _points = new List<CacheDataDTO>();
         }
 
-        public List<Points> Calculate() //если есть готовые ретурнить их
+        public List<CacheDataDTO> Calculate() 
         {
             for (double x = _param.RangeFrom; x <= _param.RangeTo; x += _param.Step)
             {
                 double y = _param.CoefficientA * Math.Pow(x, 2) + _param.CoefficientB * x + _param.CoefficientC;
-                Points temp = new Points(x, y);
+                CacheDataDTO temp = new CacheDataDTO(x, y, _param.ParamId);
                 _points.Add(temp);
             }
 
