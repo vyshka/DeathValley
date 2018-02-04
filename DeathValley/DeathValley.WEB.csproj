@@ -216,7 +216,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DeathValley.BLL\DeathValley.BLL.csproj">
       <Project>{e71b94bc-eff9-46fc-a7e6-029669ecd2d7}</Project>
