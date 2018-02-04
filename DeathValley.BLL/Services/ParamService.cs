@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DeathValley.BLL.DTO;
 using DeathValley.BLL.Infrastructure;
 using DeathValley.BLL.Interfaces;
+using DeathValley.DAL.Entities;
 using DeathValley.DAL.Interfaces;
 
 namespace DeathValley.BLL.Services
@@ -21,6 +22,7 @@ namespace DeathValley.BLL.Services
 
         public int GetIdIfExist(ParamDTO paramDto)
         {
+
             var items = Database.Params.GetAll()
                 .Where(p => p.CoefficientA == paramDto.CoefficientA)
                 .Where(p => p.CoefficientB == paramDto.CoefficientB)
@@ -37,10 +39,21 @@ namespace DeathValley.BLL.Services
             return 0;
         }
 
-        //public void Add(ParamDTO paramDto)
-        //{
-
-        //}
+        public int Add(ParamDTO paramDto)
+        {
+            Param _param = new Param
+            {
+                CoefficientA = paramDto.CoefficientA,
+                CoefficientB = paramDto.CoefficientB,
+                CoefficientC = paramDto.CoefficientC,
+                RangeFrom = paramDto.RangeFrom,
+                RangeTo = paramDto.RangeTo,
+                Step = paramDto.Step
+            };
+            Database.Params.Create(_param);
+            Database.Save();
+            return _param.ParamId;
+        }
         public void Dispose()
         {
             Database.Dispose();

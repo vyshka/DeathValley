@@ -1,8 +1,8 @@
 ﻿$("#plot").click(function() {
     var data = {
-        coefA: $("#coefA").val(),
-        coefB:$("#coefB").val(),
-        coefC:$("#coefB").val(),
+        CoefficientA: $("#coefA").val(),
+        CoefficientB: $("#coefB").val(),
+        CoefficientC: $("#coefB").val(),
         rangeFrom:$("#rangeFrom").val(),
         rangeTo:$("#rangeTo").val(),
         step:$("#step").val()
@@ -10,15 +10,15 @@
     $("#errormsg").text("");
     var err = false;
     var errMsg = "";
-    if (data.coefA.length == 0) {
+    if (data.CoefficientA.length == 0) {
         errMsg += "coefA is required.";
         err = true;
     }
-    if (data.coefB.length == 0) {
+    if (data.CoefficientB.length == 0) {
         errMsg += "coefB is required.";
         err = true;
     }
-    if (data.coefC.length == 0) {
+    if (data.CoefficientC.length == 0) {
         errMsg += "coefA is required.";
         err = true;
     }
@@ -54,14 +54,14 @@
             }
             var arrayPoints = new Array();
             returnData.forEach(element => {
-                arrayPoints.push({ x:element._x,y: element._y})
+                arrayPoints.push({ x:element.PointX,y: element.PointY})
             });
             var canvas = $("#myCanvas");
             var x = new Chart(canvas, {
                 type: 'scatter',
                 data: {
                    datasets: [{
-                      label: "y = " + data.coefA + "x^2 + " + data.coefB + "x + " + data.coefC,
+                      label: "y = " + data.CoefficientA + "x^2 + " + data.CoefficientB + "x + " + data.CoefficientC,
                       data: arrayPoints,
                    }]
                 },
