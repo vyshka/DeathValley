@@ -14,7 +14,7 @@ namespace DeathValley.App_Start
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<Data, ParamDTO>();
+                cfg.CreateMap<Params, ParamDTO>();
             });
         }
     }

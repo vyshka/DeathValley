@@ -13,12 +13,11 @@ namespace DeathValley.Controllers
 {
     public class HomeController : Controller
     {
-        private IParamService _ParamService;
+
         private IDataService _DataService;
 
-        public HomeController(IParamService ParamService, IDataService DataService)
+        public HomeController(IDataService DataService)
         {
-            _ParamService = ParamService;
             _DataService = DataService;
         }
         // GET: Home
@@ -28,25 +27,14 @@ namespace DeathValley.Controllers
         }
 
         [HttpPost]
-        public JsonResult Calculate(Data data)
+        public JsonResult Calculate(Params inParams)
         {
             if (ModelState.IsValid)
             {
-                var dataDto = Mapper.Map<Data, ParamDTO>(data);
-                var id = _ParamService.GetIdIfExist(dataDto);
-                if (id != 0)
-                {
-                    var items = _DataService.GetDataByParamId(id);
-                    return Json(items, JsonRequestBehavior.AllowGet);
-                }
-                else
-                {
-                    int dataID = _ParamService.Add(dataDto);
-                    dataDto.ParamId = dataID;
-                    var items = _DataService.CalculateData(dataDto);
-                    return Json(items, JsonRequestBehavior.AllowGet);
-                }
-                
+                var dataDto = Mapper.Map<Params, ParamDTO>(inParams);
+                var result = _DataService.GetData(dataDto);
+                return Json(result, JsonRequestBehavior.AllowGet);
+
             }
             else
             {

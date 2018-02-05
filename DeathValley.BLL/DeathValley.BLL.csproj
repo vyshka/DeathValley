@@ -55,10 +55,8 @@
     <Compile Include="DTO\ParamDTO.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Interfaces\IDataService.cs" />
-    <Compile Include="Interfaces\IParamService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DataService.cs" />
-    <Compile Include="Services\ParamService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeathValley.DAL\DeathValley.DAL.csproj">

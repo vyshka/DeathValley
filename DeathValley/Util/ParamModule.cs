@@ -12,7 +12,6 @@ namespace DeathValley.Util
     {
         public override void Load()
         {
-            Bind<IParamService>().To<ParamService>();
             Bind<IDataService>().To<DataService>();
         }
     }

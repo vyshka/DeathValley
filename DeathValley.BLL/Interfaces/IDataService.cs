@@ -6,8 +6,10 @@ namespace DeathValley.BLL.Interfaces
 {
     public interface IDataService
     {
-        List<CacheDataDTO> CalculateData(ParamDTO paramsDto);
-        List<CacheDataDTO> GetDataByParamId(int id);
+        //List<CacheDataDTO> CalculateData(ParamDTO paramsDto);
+        //List<CacheDataDTO> GetDataByParamId(int id);
+
+        List<CacheDataDTO> GetData(ParamDTO paramsDto);
         void Dispose();
     }
 }

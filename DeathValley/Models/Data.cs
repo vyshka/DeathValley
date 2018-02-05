@@ -8,7 +8,7 @@ using Foolproof;
 
 namespace DeathValley.Models
 {
-    public class Data
+    public class Params
     {
         [Required]
         public double CoefficientA { get; set; }

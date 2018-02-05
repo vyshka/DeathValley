@@ -15,12 +15,65 @@ namespace DeathValley.BLL.Services
     {
         private IUnitOfWork Database { get; set; }
 
+        int GetIdIfExist(ParamDTO paramDto)
+        {
+
+            var items = Database.Params.GetAll()
+                .Where(p => p.CoefficientA == paramDto.CoefficientA)
+                .Where(p => p.CoefficientB == paramDto.CoefficientB)
+                .Where(p => p.CoefficientC == paramDto.CoefficientC)
+                .Where(p => p.RangeFrom == paramDto.RangeFrom)
+                .Where(p => p.RangeTo == paramDto.RangeTo)
+                .Where(p => p.Step == paramDto.Step);
+            if (items.Count() == 1)
+            {
+                var item = items.First();
+                return item.ParamId;
+            }
+
+            return 0;
+        }
+
         public DataService(IUnitOfWork uow)
         {
             Database = uow;
         }
 
-        public List<CacheDataDTO> CalculateData(ParamDTO paramsDto)
+        public List<CacheDataDTO> GetData(ParamDTO paramsDto)
+        {
+            var id = GetIdIfExist(paramsDto);
+            if (id != 0)
+            {
+                var items = GetDataByParamId(id);
+                return items;
+            }
+            else
+            {
+                int dataID = AddParams(paramsDto);
+                paramsDto.ParamId = dataID;
+                var items = CalculateData(paramsDto);
+                return items;
+            }
+        }
+
+        int AddParams(ParamDTO paramDto)
+        {
+            Param _param = new Param
+            {
+                CoefficientA = paramDto.CoefficientA,
+                CoefficientB = paramDto.CoefficientB,
+                CoefficientC = paramDto.CoefficientC,
+                RangeFrom = paramDto.RangeFrom,
+                RangeTo = paramDto.RangeTo,
+                Step = paramDto.Step
+            };
+            Database.Params.Create(_param);
+            Database.Save();
+            return _param.ParamId;
+        }
+
+
+        List<CacheDataDTO> CalculateData(ParamDTO paramsDto)
         {
             Function func = new Function(paramsDto);
             var data = func.Calculate();
@@ -39,7 +92,7 @@ namespace DeathValley.BLL.Services
             return data;
         }
 
-        public List<CacheDataDTO> GetDataByParamId(int id)
+        List<CacheDataDTO> GetDataByParamId(int id)
         {
             var Param = Database.Params.Get(id);
             var items = Database.Data.Find(d => d.Param == Param);
